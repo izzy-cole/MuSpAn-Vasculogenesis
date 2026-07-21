@@ -1,3 +1,7 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+
 def cycle_intensity(cycles):
     #cycle strength is cycle death time
     cycles = [i[1] for i in cycles]
@@ -39,3 +43,32 @@ def basic_filtering(components,cycles, min_lifespan=30,upper=200,plot=False):
         if len(components)>0:
             plot_diagrams([components,cycles], show=True)
     return([components,cycles])
+
+def plot_iqr(feature_list,stages,label,title,yax):
+    medians = []
+    lower_errors = []
+    upper_errors = []
+    
+    df=pd.DataFrame(feature_list)
+    df_exploded = df.explode(label).dropna(subset=[label])
+
+    for stage in stages:
+        stage_data = df_exploded[df_exploded["Stage"]==stage][label]
+        if len(stage_data)>0:
+
+            med = np.median(stage_data)
+            medians.append(med)
+
+            lower_errors.append(med-np.percentile(stage_data,25))
+            upper_errors.append(np.percentile(stage_data,75)-med)
+        else:
+            medians.append(0)
+            lower_errors.append(0)
+            upper_errors.append(0)
+
+    plt.errorbar(stages,medians,yerr=[lower_errors,upper_errors],linewidth=2.5,capsize=4,capthick=2.5)
+    plt.xlabel("HH Stage")
+    plt.xticks(stages)
+    plt.ylabel(yax)
+    plt.title(f"{title} Through Embryo Development")
+        
