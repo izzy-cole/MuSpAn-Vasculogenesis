@@ -217,7 +217,10 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
+#Vscode
+.vscode/**
 
 #Data files
 data/**
 results/**
+archive/**
