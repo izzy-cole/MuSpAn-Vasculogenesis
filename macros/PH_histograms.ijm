@@ -63,7 +63,7 @@ for (i=0;i<stages.length;i++){
         setMinAndMax(blackValue, robustMax);
         
         // 4. Save the final updated image into the PH folder
-        // (Because we used saveAs above, the active image is already mapped to the PH path)
+        // (Because used saveAs above, the active image is already mapped to the PH path)
         run("Save");
         print("Embryo " + n + ": Histogram updated and saved to PH.");
         
