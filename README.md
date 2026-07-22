@@ -3,11 +3,11 @@
 Tool to perform persistent homology analysis (a Topological Data Analysis technique) on blood island images in chicken embryos. Uses MuSpAn ([Multiscale Spatial Analysis Toolbox](https://www.muspan.co.uk)) to run persistent homology with level-set filtration (filtration from bright to dark pixel values).
 
 **Installation and use**
+
 Request a licence for MuSpAn (Academic Use Licence) and install.
 ```bash
 
-git clone [git@github.com:izzy-cole/MuSpAn-Vasculogenesis
-.git](https://github.com/izzy-cole/MuSpAn-Vasculogenesis)
+git clone git@github.com:izzy-cole/MuSpAn-Vasculogenesis.git
 
 cd MuSpAn-Vasculogenesis
 
